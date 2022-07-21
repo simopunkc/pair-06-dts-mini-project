@@ -4,15 +4,11 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 import UserLog from './UserLog';
 
-const navItems = [
-  { text: 'Indonesian', link: '/indonesian' },
-  { text: 'Pricing', link: '/pricing' },
-  { text: 'About', link: '/about' }
-];
 
 const Navbar = () => {
   return (
@@ -34,16 +30,8 @@ const Navbar = () => {
               NONTON
             </Link>
           </Typography>
+          <SearchBar />
           <Box sx={{ display: 'block' }}>
-            {navItems.map((item) => (
-              <NavLink
-                to={item.link}
-                key={item.text}
-                className={({ isActive }) => isActive ? 'nav-active' : 'nav-inactive'}
-              >
-                {item.text}
-              </NavLink>
-            ))}
             <UserLog />
           </Box>
         </Toolbar>

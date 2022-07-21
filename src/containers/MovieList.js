@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -13,10 +13,11 @@ const MovieList = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const fetchedMovies = require("../mock-movie-list.json");
-                setMovies(fetchedMovies.results);
-                // const fetchedMovies = await tmdb.get("trending/movie/week");
-                // setMovies(fetchedMovies.data.results);
+                // const fetchedMovies = require("../mock-movie-list.json");
+                // setMovies(fetchedMovies.results);
+                const api = await tmdb({});
+                const fetchedMovies = await api.get("trending/movie/week");
+                setMovies(fetchedMovies.data.results);
                 setMoviesReady(true);
             } catch (error) {
                 console.log(error);
@@ -83,11 +84,16 @@ const MovieList = () => {
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
             }}>
-                {
-                    movies.map(movie => (
-                        <MovieCard key={movie.title} movie={movie}></MovieCard>
-                    ))
-                }
+
+                <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 2, sm: 4, md: 12 }}>
+                    {
+                        movies.map((movie, index) => (
+                            <Grid item xs={2} sm={4} md={6} key={index}>
+                                <MovieCard key={movie.title} movie={movie}></MovieCard>
+                            </Grid>
+                        ))
+                    }
+                </Grid>
             </Box>
         </Box>
     );
