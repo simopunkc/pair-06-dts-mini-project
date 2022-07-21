@@ -11,10 +11,11 @@ const DetailMovie = () => {
     useEffect(() => {
         const fetchMovie = async () => {
             try {
-                const fetchedMovie = await require("../mock-movie-single.json");
-                setSingleMovie([fetchedMovie]);
-                // const fetchedMovie = await tmdb.get(`movie/${params?.id_movie}`);
-                // setSingleMovie([fetchedMovie.data]);
+                // const fetchedMovie = await require("../mock-movie-single.json");
+                // setSingleMovie([fetchedMovie]);
+                const api = await tmdb({});
+                const fetchedMovie = await api.get(`movie/${params?.id_movie}`);
+                setSingleMovie([fetchedMovie.data]);
             } catch (error) {
                 console.log(error);
             }

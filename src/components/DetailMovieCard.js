@@ -12,7 +12,7 @@ const DetailMovieCard = ({ movie }) => {
       <CardMedia
         component="img"
         sx={{ width: '100%', height: 480, objectFit: 'contain' }}
-        image={`${BASE_IMAGE_URL}${movie.poster_path}`}
+        image={movie.poster_path != null ? `${BASE_IMAGE_URL}${movie.poster_path}` : 'https://via.placeholder.com/2000x3000'}
         alt={movie.title}
       />
       <CardContent sx={{ textAlign: 'center' }}>
