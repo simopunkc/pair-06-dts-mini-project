@@ -9,6 +9,7 @@ import App from './App';
 import PrivateComponent from './components/PrivateComponent';
 import About from './containers/About';
 import Login from './containers/Login';
+import DetailMovie from './containers/DetailMovie';
 import MovieList from './containers/MovieList';
 import NotFound from './containers/NotFound';
 import Pricing from './containers/Pricing';
@@ -26,6 +27,7 @@ root.render(
           </PrivateComponent>
         }>
           <Route path="/" element={<MovieList />} />
+          <Route path="movies/:id_movie" element={<DetailMovie />} />
           <Route path="about" element={<About />}>
             <Route path="description" element={<Box sx={{ mt: 10 }}>Provides movies in your hand</Box>} />
             <Route path="services" element={<Box sx={{ mt: 10 }}>Streaming movies, Indonesian film, and film review.</Box>} />

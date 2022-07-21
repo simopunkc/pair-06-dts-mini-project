@@ -13,7 +13,7 @@ const PrivateComponent = ({ children, loginOnly = true }) => {
     return <Navigate to="/" />;
   }
 
-  return isLoading ? <div>loading...</div> : children;
+  return isLoading ? <div className='loader'>loading...</div> : children;
 };
 
 export default PrivateComponent;

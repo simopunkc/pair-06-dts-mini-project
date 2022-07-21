@@ -13,8 +13,10 @@ const MovieList = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const fetchedMovies = await tmdb.get("trending/movie/week");
-                setMovies(fetchedMovies.data.results);
+                const fetchedMovies = require("../mock-movie-list.json");
+                setMovies(fetchedMovies.results);
+                // const fetchedMovies = await tmdb.get("trending/movie/week");
+                // setMovies(fetchedMovies.data.results);
                 setMoviesReady(true);
             } catch (error) {
                 console.log(error);
